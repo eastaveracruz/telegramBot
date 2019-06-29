@@ -18,7 +18,7 @@ public class RestController {
     @Autowired
     CityService cityService;
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<City> getAll() {
         return cityService.findAll();
     }
