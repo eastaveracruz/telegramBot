@@ -1,1 +1,0 @@
-web:   ava -jar -Dfile.encoding=UTF-8 target/demo-0.1.jar

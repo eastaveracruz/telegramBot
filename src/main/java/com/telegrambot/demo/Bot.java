@@ -3,6 +3,7 @@ package com.telegrambot.demo;
 import com.telegrambot.demo.models.City;
 import com.telegrambot.demo.services.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
@@ -17,8 +18,11 @@ import javax.annotation.PostConstruct;
 @Component
 public class Bot extends TelegramLongPollingBot {
 
-    private static final String token = "852147039:AAGVcKeN1-13PdkHS-4XWwhFmsuni_JVH0U";
-    private static final String name = "t.me/eastaveracruz_bot";
+    @Value("${telegram.bot.token}")
+    private String token;
+
+    @Value("${telegram.bot.name}")
+    private String name;
 
     @Autowired
     private CityService cityService;
@@ -51,7 +55,7 @@ public class Bot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         String inMessage = update.getMessage().getText();
         City city = cityService.findCity(inMessage);
-        String outMessage = city != null ? city.getDescription() : "not in the database";
+        String outMessage = city != null ? city.getDescription() : "нет в базе";
         sendMsg(update.getMessage().getChatId().toString(), outMessage);
     }
 

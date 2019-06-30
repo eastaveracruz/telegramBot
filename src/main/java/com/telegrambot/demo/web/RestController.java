@@ -52,4 +52,9 @@ public class RestController {
         cityService.save(city);
     }
 
+    @GetMapping("/count")
+    public long count() {
+        return cityService.count();
+    }
+
 }
