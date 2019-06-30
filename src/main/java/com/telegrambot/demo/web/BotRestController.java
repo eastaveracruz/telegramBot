@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@org.springframework.web.bind.annotation.RestController
-@RequestMapping(value = RestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class RestController {
+@RestController
+@RequestMapping(value = BotRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+public class BotRestController {
 
     public static final String REST_URL = "/rest";
 
     @Autowired
-    CityService cityService;
+    private CityService cityService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<City> getAll() {
@@ -48,7 +48,7 @@ public class RestController {
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void update(@RequestBody City city) {
+    public void update(@RequestBody City city){
         cityService.save(city);
     }
 

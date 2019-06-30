@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class RestControllerTest {
 
     private static final CharacterEncodingFilter CHARACTER_ENCODING_FILTER = new CharacterEncodingFilter();
-    public static final String REST_URL = RestController.REST_URL;
+    public static final String REST_URL = BotRestController.REST_URL;
 
     private static final String cityName = "Брюссель";
 

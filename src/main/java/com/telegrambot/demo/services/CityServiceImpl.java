@@ -33,12 +33,12 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public void delete(long id){
+    public void delete(long id) {
         cityRepository.deleteById(id);
     }
 
     @Override
-    public void delete(City city){
+    public void delete(City city) {
         cityRepository.delete(city);
     }
 
